@@ -1,0 +1,80 @@
+.footer{
+	background-color:#f2f2f2;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: .25rem;
+	text-align: center;
+}
+
+li img{
+	height: 20px;
+	width: 20px;
+	float: right;
+}
+
+ul{
+	margin: 0;
+	padding: 5px;
+	overflow: hidden;
+}
+
+li {
+	display: inline-block;
+}
+
+
+a {
+	display: block;
+	padding: 8px;
+	color:black;
+	text-decoration: none;
+}
+
+.image{
+	position: absolute;
+	margin-left: 430px;
+	margin-top: 190px;
+}
+
+input[type="submit"]{
+	border-radius: 2px;
+	background: #f2f2f2;
+	border: 1px solid #f2f2f2;
+	color: #757575;
+	cursor: default;
+	font-size: 14px;
+	font-weight: bold;
+	width: 100px;
+	padding: 10px;
+	display: inline-block;
+	text-align: center;
+	width: auto;
+}
+
+div.button-row input[type=submit] {
+	position: relative;
+	left: 28%;
+	top: 380px;
+}
+
+
+
+form.search input[type=text]{
+	padding: 13px;
+	border: 1px solid grey;
+	width: 40%;
+	position: absolute;
+	left: 28%; top: 52%;
+	box-shadow: 3px 2px;
+	background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/2000px-Google_mic.svg.png);
+	background-position: 7px 7px;
+	background-repeat: no-repeat;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+form.search input[type=text]:hover{
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 3px 4px rgba(0,0,0,0.22);
+}
