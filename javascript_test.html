@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+ 	// Your JavaScript goes here!
+    console.log("Hello, World!")
+	var reverseString = function(input) {
+		var stringArray = input.split('');
+		var reverseString = '';
+		console.log(stringArray.length)
+		for (i= stringArray.length; i > 0; i--)
+			{
+				console.log(reverseString)
+				reverseString += stringArray.pop();
+			}
+		return reverseString;
+	}
+  </script>
+</body>
+</html>

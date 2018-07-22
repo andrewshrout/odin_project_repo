@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+ 	// Your JavaScript goes here!
+ 	function primeFinder(input)
+ 	{
+ 		nextPrime:
+ 		for (var i = 2; i <= input; i++) 
+ 		{
+ 			for (var j = 2; j < i; j++)
+ 			{
+ 				if ( i % j == 0 ) continue nextPrime;
+ 			}
+ 			alert (i);
+ 		}
+
+ 	}
+
+  </script>
+</body>
+</html>

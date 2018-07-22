@@ -1,0 +1,63 @@
+body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+
+}
+
+#container{
+	min-height: 100%;
+	position: relative;
+}
+
+#header{
+	position: fixed;
+	height: 50px;
+	width: 100%;
+	text-align: center;
+	margin-right: 40px;
+	padding-top: 10px;
+	padding-right: 20px;
+
+}
+
+#header-right{
+	padding-right: 40px;
+	padding-left: 38%;
+	margin-left: 20px;
+
+
+}
+
+.header-elem{
+	display: block;
+	height: 20px;
+	text-decoration: none;
+	padding-right: 12px;
+	padding-left: 12px;
+	font-family: Arial;
+	font-size: 14px;
+	color: #666666;
+	width: 30px;
+	margin-right: 2px;
+
+}
+
+#blank-space{
+	width: 70%;
+	padding-left: 12px;
+
+}
+
+.G-Apps{
+	display: inline;
+	padding: 0px 3px 0px 3px;
+	border: 2px solid white;
+	background-color: #888888;
+	margin: auto;
+	outline: medium none;
+	display: inline;
+	width: 30px;
+	height: 30px;
+
+}

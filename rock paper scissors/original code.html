@@ -1,0 +1,74 @@
+ 	// Your JavaScript goes here!
+    console.log("Hello, World!")
+
+    function computerPlay(){
+    	var response = getRandomInt(3);
+    	if (response == 2) {
+    		return "rock";
+    	} else if ( response == 3 ){
+    		return "scissors"
+    	}
+    	return "paper";
+    }
+
+    function getRandomInt(max) {
+  		return ( Math.floor( Math.random() * max ) + 1 );
+}
+
+	function playerSelection(input){
+		var sanitizedInput = input.toLowerCase();
+		if (!(sanitizedInput == 'rock' || sanitizedInput == 'scissors' || sanitizedInput == 'paper')){
+			return ("That's not a move!");
+		}
+		return sanitizedInput;
+	}
+
+	function gameComparison(choiceOne, choiceTwo)
+	{
+		if ((choiceOne == "rock") && (choiceTwo == "paper")){
+			console.log(`You lose! ${choiceTwo} beats ${choiceOne}`)
+			return -1;
+		}
+		else if ((choiceOne =="paper") && (choiceTwo == "scissors")) {
+			console.log(`You lose! ${choiceTwo} beats ${choiceOne}`)
+			return -1;
+		}
+		else if ((choiceOne == "scissors") && (choiceTwo =="rock")){
+			console.log(`You lose! ${choiceTwo} beats ${choiceOne}`)
+			return -1;
+		}
+		else if (choiceOne == choiceTwo){
+			console.log('Its a tie!');
+			return 0;
+		}
+		else {
+			console.log(`You win! ${choiceOne} beats ${choiceTwo}`);
+			return 1;
+		}
+	}
+
+	function winDetermine(score)
+	{
+		let result = ((score >= 2) ? "Human!" :
+		score == 0 ? "Tie!" : "Computer!");
+		return result;
+	}
+
+	function gamePlay()
+	{
+			let round = 1;
+			let score = 0;
+			let roundResult;
+			var playerChoice;
+			do {
+				console.log(`Round ${round}`);
+				playerChoice = prompt("Rock, Paper or Scissors?",'');
+				roundResult = gameComparison(playerSelection(playerChoice),computerPlay());
+				score += roundResult;
+				console.log(score);
+				round++;
+			} while (round < 6);
+			console.log(``)
+			console.log(`The Winner is...`)
+			console.log(winDetermine(score));
+	}

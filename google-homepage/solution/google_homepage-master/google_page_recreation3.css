@@ -1,0 +1,207 @@
+body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+
+}
+
+#container{
+	min-height: 100%;
+	position: relative;
+}
+
+#header{
+	position: fixed;
+	height: 50px;
+	width: 100%;
+	text-align: center;
+	margin-right: 40px;
+	padding-top: 10px;
+	padding-right: 20px;
+	background-color: grey;
+}
+
+#blank-space{
+	width: 70%;
+	padding-left: 12px;
+
+}
+
+#header-right{
+	padding-right: 40px;
+	padding-left: 38%;
+	margin-left: 20px;
+
+
+}
+
+.header-elem{
+	display: block;
+	height: 20px;
+	text-decoration: none;
+	padding-right: 12px;
+	padding-left: 12px;
+	font-family: Arial;
+	font-size: 14px;
+	color: #666666;
+	width: 30px;
+	margin-right: 2px;
+
+}
+
+.header-elem:hover{
+	text-decoration: underline;
+}
+
+.G-Apps{
+	display: inline;
+	padding: 0px 3px 0px 3px;
+	border: 2px solid white;
+	background-color: #888888;
+	margin: auto;
+	outline: medium none;
+	display: inline;
+	width: 30px;
+	height: 30px;
+
+}
+
+img{
+	height: 17px;
+	width: 17px;
+	padding-top: 4px;
+	padding-right:15px;
+	padding-left: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+
+}
+
+/*#G-Apps:hover{
+	background-color: #666666;
+}*/
+
+#Sign-in{
+	display: inline-block;
+	text-decoration: none;
+	font-family: Arial;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #4684ED;
+	color: #FFFFFF;
+	padding: 8px 12px 0px 12px;
+	height: 25px;
+	width: 50px;
+	border-radius: 2px;
+	vertical-align: middle;
+	margin-right: 10px;
+
+}
+
+
+#body{
+	padding-top: 210px;
+	padding-bottom: 10px;
+	text-align: center;
+
+}
+
+#google-logo{
+	height: 105px;
+	width: 295px;
+
+}
+
+input{
+
+	width: 35%;
+	height: 1.5em;
+	font-size: 16px;
+	margin-left: 32.5%;
+	position: relative;
+	margin-top: 10px;
+
+}
+
+}
+
+#search-form{
+	text-align: center;
+	position: inline-block;
+	width: 100%;
+	margin: auto;
+
+}
+
+#search-buttons{
+	margin-auto;
+	text-align: center;
+	padding-top: 10px;
+	height: 20px;
+}
+
+button{
+	background-color: #F6F6F6;
+	display: inline-block;
+	border: 1px solid #E4E4E4;
+	border-radius: 2px;
+	height: 100%;
+	margin: 6px;
+	height: 33px;
+	width: 122px;
+	font-weight: bold;
+	color: #444444;
+	font-size: 12px;
+
+}
+
+button:hover{
+
+	border-color: lightgray;
+	color: #222222;
+
+}
+
+#footer{
+	position: fixed;
+	height: 38px;
+	width: 100%;
+	bottom: 0;
+	background-color: F2F2F2;
+	padding-top: 10px;
+	border: 2px solid E4E4E4;
+	clear: both;
+
+}
+
+.footer-elem{
+	text-decoration: none;
+	font-family: Arial;
+	font-size: 17.5px;
+	color: #666666;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: center;
+
+}
+
+.footer-elem:hover{
+	text-decoration: underline;
+
+}
+
+#footer-right{
+	padding-right: 12px;
+
+}
+
+#footer-left{
+	padding-left: 12px;
+
+}
+
+#center-space{
+	width: 80%;
+
+}
+

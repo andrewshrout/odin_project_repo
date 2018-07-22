@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="wrapper">
+	<div class="container">
+		<div>
+			<h1>Scoreboard</h1>
+		</div>
+		<div class="display" style="overflow-y: scroll; height:200px;">
+		</div>
+		<div class="buttons">
+			<button class="button" data-key='rock' id="rock">Rock</button>
+			<button class="button" data-key='paper' id="paper">Paper</button>
+			<button class="button" data-key='scissors' id="scissors">Scissors</button>
+		</div>
+	</div>
+</div>
+
+
+
+  <script>
+  	//TODO: event listener for class button, on click. returns value in 'id' as an input for human input
+
+  	function playMove(e){
+  		let playValue = this.getAttribute('id');
+  		console.log(playValue);
+  		let computerValue = computerPlay();
+  		let comparator = moveComparer(playValue, computerValue);
+  		roundCount();
+  		addScoreDiv(round + '. ' + playValue + ' ' + comparator+ ' ' + computerValue);
+  		if (round == 5)
+  			{
+  				round = round + 1;
+  				let roundEndText = roundEnd();
+  				addScoreDiv( roundEndText );
+  				const linebreak = document.createElement("br");
+  				document.querySelector('.display').appendChild(linebreak);
+
+  			}
+  	}
+  	let humanScore = 0;
+  	let computerScore = 0;
+
+  	function moveComparer(input1, input2)
+  	{
+  		if ( 
+  		(input1 === 'rock' && input2 === 'paper') ||
+  		(input1 === 'paper' && input2 === 'scissors') ||
+  		(input1 === 'scissors' && input2 === 'rock') ) {
+  			computerScore = computerScore +1;
+  			return '<';
+  		}
+  		else if ( 
+  		(input1 ==='rock' && input2 === 'scissors') ||
+  		(input1 ==='paper' && input2 === 'rock')||
+  		(input1 ==='scissors' && input2 ==='paper') ) {
+  			humanScore = humanScore +1;
+  			return '>';
+  		}
+  		else {
+  			return '=';
+  		}
+
+  	}
+
+  	let round = 0;
+
+  	function roundCount(){
+  		round = round + 1;
+  		if (round > 5)
+  		{
+  			round = 1;
+  		}
+  	}
+
+  	function roundEnd(){
+
+  		let humanWin = false;
+  		let computerWin = false;
+
+  		if ( humanScore > computerScore){
+  			humanWin = true;
+  		}
+  		else if ( computerScore > humanScore ){
+  			computerWin = true;
+  		}
+
+  		humanScore = 0;
+  		computerScore = 0;
+
+  		if ( humanWin == true){
+  			return 'Human wins!';
+  		}
+  		else if (computerWin == true){
+  			return 'Computer win!';
+  		}
+  		else {
+  			return "It's a tie!";
+  		}
+  	}
+
+
+  	var btns =Array.from(document.querySelectorAll(`button`));
+  	btns.forEach(btn=> btn.addEventListener('click',playMove));
+
+
+
+  	
+  	//TODO: program game to show score in a div
+
+  	function addScoreDiv(input){
+  		//create div
+  		display = this;
+  		const score = document.createElement('div')
+  		//score attribute
+  		score.classList.add('scoreboard')
+  		//append score
+  		score.textContent = input;
+  		//append div
+  		document.querySelector('.display').appendChild(score)
+  	}
+
+
+ 	// Your JavaScript goes here!
+    function computerPlay(){
+    	var response = getRandomInt(3);
+    	if (response == 1) {return "rock"}
+    	else if ( response == 2 ){return "scissors"}
+    	else if ( response == 3) {return "paper"}
+    }
+
+    function getRandomInt(max) {
+  		return ( Math.floor( Math.random() * max ) + 1 );
+}
+
+	function playerSelection(input){
+		var sanitizedInput = input.toLowerCase();
+		if (!(sanitizedInput == 'rock' || sanitizedInput == 'scissors' || sanitizedInput == 'paper')){
+			return ("That's not a move!");
+		}
+		return sanitizedInput;
+	}
+
+	function gameComparison(choiceOne, choiceTwo)
+	{
+		if ((choiceOne == "rock") && (choiceTwo == "paper")){
+			console.log(`You lose! ${choiceTwo} beats ${choiceOne}`)
+			return -1;
+		}
+		else if ((choiceOne =="paper") && (choiceTwo == "scissors")) {
+			console.log(`You lose! ${choiceTwo} beats ${choiceOne}`)
+			return -1;
+		}
+		else if ((choiceOne == "scissors") && (choiceTwo =="rock")){
+			console.log(`You lose! ${choiceTwo} beats ${choiceOne}`)
+			return -1;
+		}
+		else if (choiceOne == choiceTwo){
+			console.log('Its a tie!');
+			return 0;
+		}
+		else {
+			console.log(`You win! ${choiceOne} beats ${choiceTwo}`);
+			return 1;
+		}
+	}
+
+	function winDetermine(score)
+	{
+		let result = ((score >= 2) ? "Human!" :
+		score == 0 ? "Tie!" : "Computer!");
+		return result;
+	}
+
+	function gamePlay()
+	{
+			let round = 1;
+			let score = 0;
+			let roundResult;
+			var playerChoice;
+			do {
+				console.log(`Round ${round}`);
+				playerChoice = prompt("Rock, Paper or Scissors?",'');
+				roundResult = gameComparison(playerSelection(playerChoice),computerPlay());
+				score += roundResult;
+				console.log(score);
+				round++;
+			} while (round < 6);
+			console.log(``)
+			console.log(`The Winner is...`)
+			console.log(winDetermine(score));
+	}
+  </script>
+</body>
+</html>
