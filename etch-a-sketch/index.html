@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+	<title></title>
+</head>
+<body>
+	<div class="main-wrapper">
+		<div class="grid-wrapper">
+		</div>
+		<div class="control-panel">
+			<button id='btn_clear'><i class="fa fa-ban"></i></button>
+			<button id='btn_bw'><i class="fa fa-eye"></i></button>
+			<button id='btn_grow'><i class="fa fa-expand-arrows-alt"></i></button>
+		</div>
+
+	</div>
+</body>
+
+<script type="text/javascript">
+
+	//initial load of grid
+	window.onload = generateGrid();
+
+	//TODO: DOM manipulation to create an adjustable grid of squares
+	function generateGrid(input=8){
+		if (input > 64)
+		{
+			alert("Input must be 64 or less!");
+			return;
+		}
+		for(i=0; i < ( input );i++) {
+			const contDiv = document.createElement('div')
+			contDiv.classList.add('container-row')
+			for (j=0; j < ( input );j++){
+				const div = document.createElement('div')
+				div.classList.add('square')
+				//give each DIV a unique ID to solve color change issue
+				contDiv.append(div)
+			}
+			document.querySelector('.grid-wrapper').append(contDiv);
+		}
+		boxEventCreator();
+	}
+
+	function clearGrid(){
+		let daddyNode = document.querySelector('.grid-wrapper');
+		while (daddyNode.firstChild) {
+			daddyNode.removeChild(daddyNode.firstChild);
+		}
+	}
+
+	function boxEventCreator(){
+		let boxes = Array.from(document.getElementsByClassName("square"));
+		console.log(boxes);
+		for (var box of boxes)
+		{
+			box.setAttribute('id',generateID())
+			box.addEventListener('mouseover', colorChange);
+		}
+}
+	function generateID(){
+	  	return '_' + Math.random().toString(36).substr(2, 9);
+	};
+
+	let bwToggle = false; // this is false by default (color vs black and white)
+
+	function bwToggler(){
+		if (bwToggle==false){
+			return bwToggle=true;
+		}
+		return bwToggle=false;
+	}
+
+	function colorChange(object){
+		var box = object.target;
+		const colorBox = document.querySelector(`#${box.id}`)
+		if (colorBox.getAttribute('style','background-color')){
+			let colorToDarken = colorBox.getAttribute('style','background-color').slice(17)
+			colorToDarken = shadeColor2(colorToDarken);
+			colorBox.setAttribute('style',`background-color:${colorToDarken}`)
+		}
+		else if (bwToggle){
+			if (colorBox.getAttribute('style','background-color')) {
+				let colorToDarken = colorBox.getAttribute('style','background-color').slice(17)
+				colorToDarken = shadeColor2(colorToDarken);
+				colorBox.setAttribute('style',`background-color:${colorToDarken}`)
+			}
+			else {
+				colorBox.setAttribute('style','background-color:#F0F0F0')
+			}
+		}
+		else {
+			let newColor = getRandomColor();
+			colorBox.setAttribute('style',`background-color:${newColor}`)
+		}
+	}
+
+
+
+	function getRandomColor() {
+  		var letters = '6789ABCDEFG';
+  		var color = '#';
+  		for (var i = 0; i < 6; i++){
+    		color += letters[Math.floor(Math.random() * 6)];
+  		}
+  		return color;
+	}
+
+
+
+function shadeColor2(color, percent=-.15) {   
+    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+    return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+}
+
+	//TODO: event listener for color (button 2)
+	var btn_1 = document.getElementById('btn_clear')
+	btn_1.addEventListener("click",()=>{
+		clearGrid();
+		generateGrid();
+	});
+	//TODO: event listener for black/white (button 2 toggle)
+	var btn_2 = document.getElementById('btn_bw')
+	btn_2.addEventListener("click",bwToggler)
+	//TODO: event listener for prompt to make more squares (button 3)
+	var btn_3 = document.getElementById('btn_grow')
+	btn_3.addEventListener("click",()=>{
+		clearGrid();
+		var gridSize = prompt("Enter a new size");
+		generateGrid(gridSize);
+	});
+
+
+</script>
+
+</html>
